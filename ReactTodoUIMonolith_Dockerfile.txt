@@ -1,0 +1,17 @@
+FROM node:16.20.2
+WORKDIR /frontend
+COPY . .
+RUN npm install -y && npm run build
+RUN apt update && apt install nginx -y
+RUN cp -r build/* /var/www/html/
+CMD ["nginx", "-g", "daemon off;"]
+root@mishracentralvm:/home/adminuser/React_Python_Java_DockerFile/ReactTodoUIMonolith# ls
+README.md  dockerfile  package-lock.json  package.json  public  src
+root@mishracentralvm:/home/adminuser/React_Python_Java_DockerFile/ReactTodoUIMonolith# cat dockerfile
+FROM node:16.20.2
+WORKDIR /frontend
+COPY . .
+RUN npm install -y && npm run build
+RUN apt update && apt install nginx -y
+RUN cp -r build/* /var/www/html/
+CMD ["nginx", "-g", "daemon off;"]
